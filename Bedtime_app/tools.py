@@ -8,7 +8,8 @@ from elevenlabs import VoiceSettings
 from dotenv import load_dotenv
 # from pydub import AudioSegment
 # from pydub.playback import play
-
+import streamlit as st
+import time
      
 def generate_audio(text: str) -> IO[bytes]:
     """Generates Audio
@@ -46,30 +47,35 @@ def generate_audio(text: str) -> IO[bytes]:
 
     # # # Create a BytesIO object to hold audio data
     audio_stream = BytesIO()
-
+    st.write("Streaming audio...")
     # # Write each chunk of audio data to the stream
     for chunk in response:
         if chunk:
             audio_stream.write(chunk)
-
     # # Reset stream position to the beginning
     audio_stream.seek(0)
+    st.audio(audio_stream, autoplay=True)
+   
+
 
     # # play(audio_stream)
 
     # # Example BytesIO object containing raw audio data
 
 
-    # # Run FFmpeg to play audio
-    process = subprocess.Popen(
-        ["ffplay", "-i", "pipe:0","-f", "mp3","-nodisp", "-autoexit"],  # FFplay reads from stdin
-        stdin=subprocess.PIPE,
-        stdout=subprocess.DEVNULL,  # Suppress stdout output
-        stderr=subprocess.DEVNULL   # Suppress stderr output
-    )
+    # # # Run FFmpeg to play audio
+    # process = subprocess.Popen(
+    #     ["ffplay", "-i", "pipe:0","-f", "mp3","-nodisp", "-autoexit"],  # FFplay reads from stdin
+    #     stdin=subprocess.PIPE,
+    #     stdout=subprocess.DEVNULL,  # Suppress stdout output
+    #     stderr=subprocess.DEVNULL   # Suppress stderr output
+    # )
 
     # # Send BytesIO data to FFmpeg
-    process.communicate(input=audio_stream.getvalue())
-    
+    # process.communicate(input=audio_stream.getvalue())
+    # Simulating streaming by loading chunks dynamically
+  
+
+
 
     
