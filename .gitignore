@@ -2,6 +2,6 @@
 Single Agent
 .venv
 __pycache__
-ffplay
+ffplay.exe
 config.toml
 pyproject.toml  

@@ -37,34 +37,38 @@ def generate_audio(text: str) -> IO[bytes]:
             use_speaker_boost=True,
         ),
         )
-    # save(response,'story.wav')
-    # audio_file = AudioSegment.from_wav("your_audio_file.wav")
-    # play(audio_file)
-    # Create a BytesIO object to hold audio data
+    # save(response,'story.mp3')
+    # with open('story.mp3', "rb") as f:
+    #     mp3_data = f.read()
+        
+    # mp3_stream = BytesIO(mp3_data)
+    # # subprocess.run(["ffplay", "-nodisp", "-autoexit", "story_audio.wav"],check = True)
+
+    # # # Create a BytesIO object to hold audio data
     audio_stream = BytesIO()
 
-    # Write each chunk of audio data to the stream
+    # # Write each chunk of audio data to the stream
     for chunk in response:
         if chunk:
             audio_stream.write(chunk)
 
-    # Reset stream position to the beginning
+    # # Reset stream position to the beginning
     audio_stream.seek(0)
 
-    # play(audio_stream)
+    # # play(audio_stream)
 
-    # Example BytesIO object containing raw audio data
+    # # Example BytesIO object containing raw audio data
 
 
-    # Run FFmpeg to play audio
+    # # Run FFmpeg to play audio
     process = subprocess.Popen(
-        ["ffplay", "-i", "pipe:0"],  # FFplay reads from stdin
+        ["ffplay", "-i", "pipe:0","-f", "mp3","-nodisp", "-autoexit"],  # FFplay reads from stdin
         stdin=subprocess.PIPE,
         stdout=subprocess.DEVNULL,  # Suppress stdout output
         stderr=subprocess.DEVNULL   # Suppress stderr output
     )
 
-    # Send BytesIO data to FFmpeg
+    # # Send BytesIO data to FFmpeg
     process.communicate(input=audio_stream.getvalue())
     
 
