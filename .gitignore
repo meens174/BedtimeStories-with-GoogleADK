@@ -1,0 +1,7 @@
+.env
+Single Agent
+.venv
+__pycache__
+ffplay
+config.toml
+pyproject.toml  
