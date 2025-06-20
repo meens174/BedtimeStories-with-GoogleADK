@@ -3,10 +3,10 @@
 As a part of this project, I have set up  a Bedtime storytelling app using Google's ADK.
 
 The primary libraries required would be 
-  >  google-adk
-  >  Eleven-labs
-  >  dotenv (depending on how you'd like the API keys to be retrieved)
-  >  ffmpeg
+  *  google-adk
+  *  Eleven-labs
+  *  dotenv (depending on how you'd like the API keys to be retrieved)
+  *  ffmpeg
 
 For the purpose of this project, I have broken down my task of my storytelling into 3 sub-tasks that I have assigned to 3 of the sub-agents viz. the Greeter (primarily for greeting the user and accepting a topic for the storytelling from a user), the Story Creation Agent which creates the story and finally the story narration agent that narrates the story back to the user.
 
