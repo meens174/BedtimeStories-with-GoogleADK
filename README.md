@@ -1,6 +1,6 @@
 ## Here's my first experiment with Google ADK !
 
-As a part of this project, I have set up  a Bedtime storytelling app using Google's ADK.
+As a part of this project, I have set up  a Bedtime storytelling app using Google's ADK that accepts a topic for the story telling as input and creates a text version of the story and narrates the story in audio format out to the user.
 
 The primary libraries required would be 
   *  google-adk
